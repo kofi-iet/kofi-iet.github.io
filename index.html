@@ -3,290 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Combrex</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Bot Developer Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary-color: #2ecc71;
+            --secondary-color: #27ae60;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 2rem;
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            line-height: 1.6;
         }
 
         .container {
-            width: 100%;
-            max-width: 600px;
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 0 20px;
         }
 
-        .profile-section {
-            text-align: center;
-            margin-bottom: 2rem;
-            animation: fadeIn 1s ease-in;
-        }
-
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 3px solid white;
-            margin-bottom: 1rem;
-            object-fit: cover;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        }
-
-        .name {
-            color: white;
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .bio {
-            color: rgba(255,255,255,0.9);
-            font-size: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .links-container {
-            display: grid;
-            gap: 1rem;
-        }
-
-        .link-button {
-            background: rgba(255,255,255,0.9);
-            padding: 1rem;
-            border-radius: 12px;
-            text-decoration: none;
-            color: #333;
-            display: flex;
-            align-items: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-        }
-
-        .link-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        }
-
-        .link-icon {
-            width: 30px;
-            height: 30px;
-            margin-right: 1rem;
-        }
-
-        .social-links {
-            margin-top: 2rem;
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-        }
-
-        .social-icon {
-            color: white;
-            font-size: 1.5rem;
-            transition: transform 0.3s ease;
-        }
-
-        .social-icon:hover {
-            transform: translateY(-3px);
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 480px) {
-            body {
-                padding: 1rem;
-            }
-            
-            .name {
-                font-size: 1.5rem;
-            }
-            
-            .bio {
-                font-size: 0.9rem;
-            }
-            <!-- Tambahkan ini di dalam tag style -->
-        /* Tambahan Fitur */
-        .theme-toggle {
+        /* Header Styles */
+        header {
+            background-color: rgba(44, 62, 80, 0.95);
+            padding: 1rem 0;
             position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(255,255,255,0.2);
-            padding: 10px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .theme-toggle:hover {
-            background: rgba(255,255,255,0.3);
-        }
-.stats-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-    margin: 2rem 0;
-    padding: 0 1rem;
-}
-
-.stat-box {
-    background: rgba(255,255,255,0.15);
-    padding: 1.5rem;
-    border-radius: 10px;
-    text-align: center;
-    backdrop-filter: blur(5px);
-    flex: 1;
-    min-width: 120px;
-    max-width: 200px;
-    margin: 0.5rem;
-}
-
-.stat-number {
-    color: white;
-    font-size: 1.5rem;
-    font-weight: bold;
-    line-height: 1.2;
-    margin-bottom: 0.3rem;
-}
-
-.stat-label {
-    color: rgba(255,255,255,0.8);
-    font-size: 0.8rem;
-    letter-spacing: 0.5px;
-}
-
-@media (max-width: 768px) {
-    .stats-container {
-        gap: 0.5rem;
-    }
-    
-    .stat-box {
-        padding: 1rem;
-        min-width: 100px;
-        margin: 0.25rem;
-    }
-    
-    .stat-number {
-        font-size: 1.2rem;
-    }
-    
-    .stat-label {
-        font-size: 0.7rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .stats-container {
-        flex-direction: column;
-        align-items: center;
-        gap: 0.75rem;
-    }
-    
-    .stat-box {
-        width: 100%;
-        max-width: 250px;
-        padding: 1.2rem;
-    }
-}
-        
-
-        .floating-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #4ecdc4;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .floating-button:hover {
-            transform: scale(1.1);
-        }
-
-        /* Dark Theme */
-        body.dark-theme {
-            background: linear-gradient(45deg, #2c3e50, #3498db);
-        }
-
-        body.dark-theme .link-button {
-            background: rgba(0,0,0,0.7);
-            color: white;
-        }
-
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
-            background: white;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--light-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            transition: 0.5s;
+            text-align: center;
+            padding-top: 80px;
         }
 
-        .loader {
-            border: 5px solid #f3f3f3;
-            border-radius: 50%;
-            border-top: 5px solid #4ecdc4;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
         }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
         }
 
-        .hidden {
-            display: none;
-        }
-        <!-- Tambahkan di bagian style -->
-        /* Advanced Features */
-        :root {
-            --primary-color: #4ecdc4;
-            --secondary-color: #ff6b6b;
-            --text-color: #333;
+        .cta-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
         }
 
-        .project-grid {
+        .cta-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 5rem 0;
+        }
+
+        .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
         }
 
         .project-card {
-            background: rgba(255,255,255,0.9);
-            border-radius: 15px;
+            background-color: #34495e;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-            cursor: pointer;
+            transition: transform 0.3s;
         }
 
         .project-card:hover {
@@ -294,236 +131,215 @@
         }
 
         .project-image {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
         }
 
-        .project-content {
-            padding: 1.2rem;
+        .project-info {
+            padding: 1.5rem;
         }
 
-        .project-title {
-            color: var(--text-color);
-            margin-bottom: 0.5rem;
+        /* Skills Section */
+        .skills {
+            padding: 5rem 0;
+            background-color: #34495e;
         }
 
-        .project-description {
-            color: #666;
-            font-size: 0.9rem;
-            line-height: 1.4;
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-item {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 0;
         }
 
         .contact-form {
-            background: rgba(255,255,255,0.9);
-            padding: 2rem;
-            border-radius: 15px;
-            margin-top: 2rem;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .form-group {
             margin-bottom: 1.5rem;
         }
 
-        .form-input {
+        input, textarea {
             width: 100%;
             padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: var(--primary-color);
-        }
-
-        .form-button {
-            background: var(--primary-color);
-            color: white;
-            padding: 1rem 2rem;
+            background-color: #34495e;
             border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        .form-button:hover {
-            background: #3da89f;
-        }
-
-        .toast {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0,0,0,0.8);
+            border-radius: 5px;
             color: white;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 1000;
         }
 
-        .toast.show {
-            opacity: 1;
+        /* Footer */
+        footer {
+            background-color: #34495e;
+            padding: 2rem 0;
+            text-align: center;
         }
 
-        .progress-bar {
-            height: 4px;
-            background: #eee;
-            border-radius: 2px;
-            overflow: hidden;
-            margin: 1rem 0;
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
         }
 
-        .progress {
-            height: 100%;
-            background: var(--primary-color);
-            width: 0;
-            transition: width 0.5s ease;
+        .social-links a {
+            color: var(--light-color);
+            font-size: 1.5rem;
+            transition: color 0.3s;
         }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
-<!-- Tambahkan elemen berikut sebelum tag </body> -->
-    <!-- Loading Screen -->
-    <div class="loading-screen" id="loadingScreen">
-        <div class="loader"></div>
-    </div>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">BotDev</div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
 
-    <!-- Theme Toggle -->
-    <div class="theme-toggle" onclick="toggleTheme()">
-        <i class="fas fa-moon" id="themeIcon"></i>
-    </div>
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1>AI & Chatbot Developer</h1>
+            <p>Building intelligent solutions for the future</p>
+            <a href="#contact" class="cta-btn">Get in Touch</a>
+        </div>
+    </section>
 
-    <!-- Floating Button -->
-    <div class="floating-button" onclick="scrollToTop()">
-        <i class="fas fa-arrow-up" style="color: white;"></i>
-    </div>
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('https://via.placeholder.com/300x200')"></div>
+                    <div class="project-info">
+                        <h3>Customer Service Bot</h3>
+                        <p>AI-powered customer support solution with NLP integration</p>
+                    </div>
+                </div>
+                <!-- Add more project cards -->
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <i class="fas fa-robot fa-3x"></i>
+                    <h4>AI Development</h4>
+                </div>
+                <!-- Add more skills -->
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <input type="text" placeholder="Name">
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Message" rows="5"></textarea>
+                </div>
+                <button type="submit" class="cta-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p>&copy; 2023 BotDev. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script>
-        // Simulasi loading screen
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('loadingScreen').classList.add('hidden');
-            }, 1000);
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
         });
 
-        // Toggle theme
-        function toggleTheme() {
-            document.body.classList.toggle('dark-theme');
-            const icon = document.getElementById('themeIcon');
-            icon.classList.toggle('fa-moon');
-            icon.classList.toggle('fa-sun');
-        }
-
-        // Scroll to top
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-
-        // Animasi saat scroll
-        window.addEventListener('scroll', () => {
-            const elements = document.querySelectorAll('.link-button');
-            elements.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight) {
-                    el.style.opacity = '1';
-                }
-                // Tambahkan di bagian script
-        // Form handling
-        function handleSubmit(e) {
+        // Form submission
+        const form = document.querySelector('.contact-form');
+        form.addEventListener('submit', (e) => {
             e.preventDefault();
-            const toast = document.getElementById('toast');
-            const progress = document.getElementById('formProgress');
-            
-            progress.style.width = '100%';
-            
-            setTimeout(() => {
-                toast.textContent = "Message sent successfully!";
-                toast.classList.add('show');
-                e.target.reset();
-                progress.style.width = '0';
-                
-                setTimeout(() => {
-                    toast.classList.remove('show');
-                }, 3000);
-            }, 1000);
-        }
+            // Add your form submission logic here
+            alert('Thank you for your message! I will get back to you soon.');
+            form.reset();
+        });
 
-        // Intersection Observer for animations
+        // Scroll animation
+        const observerOptions = {
+            threshold: 0.1
+        };
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
                 }
             });
-        }, { threshold: 0.1 });
+        }, observerOptions);
 
-        document.querySelectorAll('.project-card, .contact-form').forEach(el => {
-            el.style.opacity = 0;
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'all 0.6s ease';
-            observer.observe(el);
-        });
-
-        // Dynamic copyright year
-        document.getElementById('copyrightYear').textContent = new Date().getFullYear();
-            });
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.style.opacity = "0";
+            card.style.transform = "translateY(20px)";
+            card.style.transition = "all 0.5s ease-out";
+            observer.observe(card);
         });
     </script>
-</head>
-<body>
-    <div class="container">
-        <div class="profile-section">
-            <img src="./img/avatar.png" alt="Profile Picture" class="profile-img">
-            <h1 class="name">Combrex</h1>
-            <p class="bio">Content Creator | Python Enthusiast | Node.js Enthusiast</p>
-            
-            <div class="links-container">
-                <a href="#" class="link-button">
-                    <img src="./img/avatar.png" alt="Portfolio" class="link-icon">
-                    Discord
-                </a>
-                <div class="links-container">
-                <a href="#" class="link-button">
-                    <img src="./img/github.png" alt="Portfolio" class="link-icon">
-                    Github
-                </a>
-                <div class="links-container">
-                <a href="#" class="link-button">
-                    <img src="./img/youtube.png" alt="Portfolio" class="link-icon">
-                    Youtube
-                </a>
-                <div class="links-container">
-                <a href="#" class="link-button">
-                    <img src="./img/tiktok.png" alt="Portfolio" class="link-icon">
-                    Tiktok
-                </a>
-            </div>
-
-            <div class="social-links">
-                <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-discord"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
-            </div>
-        </div>
-
-        <div class="toast" id="toast"></div>
-    </div>
-    <footer style="color: white; text-align: center; padding: 2rem;">
-    <p>&copy; <span id="copyrightYear"></span> Lexsky. All rights reserved</p>
-    <p style="margin-top: 0.5rem;">
-        <a href="#" style="color: white; text-decoration: none;">Privacy Policy</a> | 
-        <a href="#" style="color: white; text-decoration: none;">Terms of Service</a>
-    </p>
-</footer>
 </body>
-</html>
+    </html>
