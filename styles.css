@@ -10,24 +10,26 @@ header {
     color: #fff;
     padding: 10px 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Pusatkan logo */
     align-items: center;
 }
 
 .nav-links {
     list-style: none;
     display: flex;
+    gap: 20px; /* Jarak antar menu */
+    margin: 0;
+    padding: 0;
 }
 
 .nav-links li {
-    margin-left: 20px;
+    margin: 0;
 }
 
 .nav-links a {
     color: #fff;
     text-decoration: none;
 }
-
 .products {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
