@@ -1,315 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pterodactyl Panel List</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
-
-        body {
-            background: #0f172a;
-            color: #fff;
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #7c3aed;
-        }
-
-        .stats {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            margin-bottom: 2rem;
-        }
-
-        .stat-item {
-            background: #1e293b;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .servers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .server-card {
-            background: #1e293b;
-            border-radius: 12px;
-            padding: 1.5rem;
-            transition: transform 0.2s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .server-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .status-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-        }
-
-        .online { background: #10b981; }
-        .offline { background: #ef4444; }
-        .maintenance { background: #f59e0b; }
-
-        .server-name {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .server-description {
-            color: #94a3b8;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-        }
-
-        .resource-bar {
-            margin-bottom: 1rem;
-        }
-
-        .resource-label {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.3rem;
-            font-size: 0.9rem;
-        }
-
-        .progress-bar {
-            height: 8px;
-            background: #334155;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .progress {
-            height: 100%;
-            background: #7c3aed;
-            border-radius: 4px;
-            transition: width 0.3s ease;
-        }
-
-        .server-actions {
-            display: flex;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .btn {
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: opacity 0.2s;
-        }
-
-        .btn-primary {
-            background: #7c3aed;
-            color: white;
-        }
-
-        .btn-secondary {
-            background: #334155;
-            color: white;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
-            
-            .stats {
-                flex-direction: column;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1>Server Panel</h1>
-            <div class="stats">
-                <div class="stat-item">
-                    <h3>Total Servers</h3>
-                    <p>12</p>
-                </div>
-                <div class="stat-item">
-                    <h3>Active</h3>
-                    <p>3</p>
-                </div>
-                <div class="stat-item">
-                    <h3>Nonaktif</h3>
-                    <p>3</p>
-            </div>
-        </div>
-
-        <div class="servers-grid" id="serversContainer">
-            <!-- Server cards will be dynamically added here -->
-        </div>
-    </div>
-
-    <script>
-        // Sample server data
-        const servers = [
-            {
-                name: "Skyblock Server",
-                status: "online",
-                description: "Minecraft Skyblock survival server",
-                cpu: 65,
-                memory: 80,
-                disk: 45,
-                id: "srv-2354"
-            },
-            {
-                name: "Skyblock Server",
-                status: "online",
-                description: "Minecraft Skyblock survival server",
-                cpu: 65,
-                memory: 80,
-                disk: 45,
-                id: "srv-2354"
-            },
-            {
-                name: "Creative Server",
-                status: "maintenance",
-                description: "Creative building server",
-                cpu: 10,
-                memory: 25,
-                disk: 15,
-                id: "srv-9871"
-            },
-            {
-                name: "Skyblock Server",
-                status: "online",
-                description: "Minecraft Skyblock survival server",
-                cpu: 65,
-                memory: 80,
-                disk: 45,
-                id: "srv-2354"
-            },
-            {
-                name: "Skyblock Server",
-                status: "online",
-                description: "Minecraft Skyblock survival server",
-                cpu: 65,
-                memory: 80,
-                disk: 45,
-                id: "srv-2354"
-            },
-            {
-                name: "Factions Server",
-                status: "offline",
-                description: "Competitive factions server",
-                cpu: 0,
-                memory: 0,
-                disk: 10,
-                id: "srv-4521"
-            }
-        ];
-
-        function createServerCard(server) {
-            const card = document.createElement('div');
-            card.className = 'server-card';
-
-            const statusClass = {
-                online: 'online',
-                offline: 'offline',
-                maintenance: 'maintenance'
-            }[server.status];
-
-            card.innerHTML = `
-                <div class="status-dot ${statusClass}"></div>
-                <h3 class="server-name">${server.name}</h3>
-                <p class="server-description">${server.description}</p>
-                <div class="resource-bar">
-                    <div class="resource-label">
-                        <span>CPU</span>
-                        <span>${server.cpu}%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: ${server.cpu}%"></div>
-                    </div>
-                </div>
-                <div class="resource-bar">
-                    <div class="resource-label">
-                        <span>Memory</span>
-                        <span>${server.memory}%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: ${server.memory}%"></div>
-                    </div>
-                </div>
-                <div class="resource-bar">
-                    <div class="resource-label">
-                        <span>Disk</span>
-                        <span>${server.disk}%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: ${server.disk}%"></div>
-                    </div>
-                </div>
-                <div class="server-actions">
-                    <button class="btn btn-primary">Manage</button>
-                    <button class="btn btn-secondary">Statistics</button>
-                </div>
-                <small style="color: #64748b; display: block; margin-top: 1rem;">ID: ${server.id}</small>
-            `;
-
-            return card;
-        }
-
-        // Render server cards
-        const container = document.getElementById('serversContainer');
-        servers.forEach(server => {
-            container.appendChild(createServerCard(server));
-        });
-
-        // Add pulse animation to online status dots
-        document.querySelectorAll('.online').forEach(dot => {
-            dot.style.animation = 'pulse 2s infinite';
-        });
-
-        // Add animation
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes pulse {
-                0% { opacity: 1; }
-                50% { opacity: 0.5; }
-                100% { opacity: 1; }
-            }
-        `;
-        document.head.appendChild(style);
-    </script>
-</body>
-</html>
+     <html lang="en">
+     <head>
+         <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <title>My Store</title>
+         <link rel="stylesheet" href="styles.css">
+     </head>
+     <body>
+         <header>
+             <nav>
+                 <div class="logo">My Store</div>
+                 <ul class="nav-links">
+                     <li><a href="#">Home</a></li>
+                     <li><a href="#">Products</a></li>
+                     <li><a href="#">About</a></li>
+                     <li><a href="#">Contact</a></li>
+                 </ul>
+             </nav>
+         </header>
+         <main>
+             <section class="products">
+                 <div class="product-card">
+                     <img src="product1.jpg" alt="Product 1">
+                     <h3>Product 1</h3>
+                     <p>$20.00</p>
+                     <button>Add to Cart</button>
+                 </div>
+                 <!-- Tambahkan lebih banyak product card di sini -->
+             </section>
+         </main>
+         <footer>
+             <p>&copy; 2025 My Store</p>
+         </footer>
+     </body>
+         </html>
