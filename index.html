@@ -1,36 +1,38 @@
 <!DOCTYPE html>
-     <html lang="en">
-     <head>
-         <meta charset="UTF-8">
-         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-         <title>My Store</title>
-         <link rel="stylesheet" href="styles.css">
-     </head>
-     <body>
-         <header>
-             <nav>
-                 <div class="logo">My Store</div>
-                 <ul class="nav-links">
-                     <li><a href="#">Home</a></li>
-                     <li><a href="#">Products</a></li>
-                     <li><a href="#">About</a></li>
-                     <li><a href="#">Contact</a></li>
-                 </ul>
-             </nav>
-         </header>
-         <main>
-             <section class="products">
-                 <div class="product-card">
-                     <img src="product1.jpg" alt="Product 1">
-                     <h3>Product 1</h3>
-                     <p>$20.00</p>
-                     <button>Add to Cart</button>
-                 </div>
-                 <!-- Tambahkan lebih banyak product card di sini -->
-             </section>
-         </main>
-         <footer>
-             <p>&copy; 2025 My Store</p>
-         </footer>
-     </body>
-         </html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Store</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">My Store</div>
+            <div class="hamburger" onclick="toggleMenu()">☰</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="products">
+            <div class="product-card">
+                <img src="product1.jpg" alt="Product 1">
+                <h3>Product 1</h3>
+                <p>$20.00</p>
+                <button>Add to Cart</button>
+            </div>
+            <!-- Tambahkan lebih banyak product card di sini -->
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 My Store</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+                     </html>
