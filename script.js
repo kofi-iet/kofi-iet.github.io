@@ -1,6 +1,4 @@
-// Contoh sederhana untuk menambahkan interaktivitas
-     document.querySelectorAll('.product-card button').forEach(button => {
-         button.addEventListener('click', () => {
-             alert('Product added to cart!');
-         });
-     });
+function toggleMenu() {
+    const navLinks = document.getElementById('navLinks');
+    navLinks.classList.toggle('active');
+}
